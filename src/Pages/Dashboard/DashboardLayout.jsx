@@ -5,7 +5,7 @@ import { useAuth } from "../../Context/AuthContext";
 const Dashboard = () => {
   const { user, logout } = useAuth();
 
-  if (!user) return <p>Loading...</p>;
+  if (!user) return <p>Loading</p>;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
