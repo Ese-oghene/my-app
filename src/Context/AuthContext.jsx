@@ -38,7 +38,8 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     const res = await api.get("/user"); // will now include Bearer token
-    setUser(res.data); // Laravel returns the authenticated user
+    setUser(res.data.data.user); // same shape as login/register
+    //setUser(res.data); // Laravel returns the authenticated user
   };
 
   const logout = () => {
