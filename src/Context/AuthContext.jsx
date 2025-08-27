@@ -5,11 +5,14 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       fetchUser(); // try to load user if token exists
+    }else {
+      setLoading(false);
     }
   }, []);
 
@@ -37,9 +40,19 @@ export const AuthProvider = ({ children }) => {
   };
 
   const fetchUser = async () => {
-    const res = await api.get("/user"); // will now include Bearer token
+    try {
+      const res = await api.get("/user"); // will now include Bearer token
     setUser(res.data.data.user); // same shape as login/register
     //setUser(res.data); // Laravel returns the authenticated user
+      
+    } catch (error) {
+      console.error("⚠️ Failed to fetch user:", err);
+      localStorage.removeItem("token");
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+    
   };
 
   const logout = () => {

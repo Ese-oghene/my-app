@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-//  baseURL: "http://127.0.0.1:8000/api", // your Laravel API base
+ // baseURL: "http://127.0.0.1:8000/api", // your Laravel API base
   baseURL: "https://www.mybro.com.ng/api", // your Laravel API base
 });
 
