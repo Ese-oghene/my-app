@@ -17,7 +17,7 @@ const Dashboard = () => {
 
          {/* 👇 Wallet info */}
         {user.account && (
-          <div className="mt-4 p-4 border rounded-lg bg-gray-50">
+          <div className="mb-10 p-4 border rounded-lg bg-gray-50">
             <h2 className="text-lg font-semibold mb-2">💳 Wallet</h2>
             <p><strong>Account Number:</strong> {user.account.account_number}</p>
             <p><strong>Balance:</strong> ₦{user.account.balance}</p>

@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      
         <Routes>
           <Route path='/' element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
@@ -28,7 +28,6 @@ function App() {
 
         {/* Footer stays across pages */}
       <Footer />
-      </Router>
     </>
   )
 }
