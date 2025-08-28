@@ -1,11 +1,20 @@
 // src/Pages/Dashboard.jsx
 // import { useAuth } from "../Context/AuthContext";
 import { useAuth } from "../../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
 
+  const navigate = useNavigate();
+
   if (!user) return <p>Loading</p>;
+
+  const handleLogout = () => {
+     logout();           // clear token & user
+    navigate("/");      // redirect to Home page
+
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -26,7 +35,7 @@ const Dashboard = () => {
         )}
 
         <button 
-          onClick={logout} 
+          onClick={handleLogout} 
           className="w-full p-3 bg-red-500 text-white rounded-lg hover:bg-red-600"
         >
           Logout
